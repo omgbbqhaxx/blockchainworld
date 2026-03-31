@@ -209,7 +209,7 @@
         class="w-full bg-[#F5F5F7] pt-24 md:pt-28 pb-0 flex flex-col items-stretch"
       >
         <div
-          class="max-w-4xl w-full mx-auto px-6 text-center space-y-6 md:space-y-7 pb-4 reveal active"
+          class="max-w-4xl w-full mx-auto px-6 pb-4 reveal active flex flex-col items-center gap-4 md:gap-5"
         >
           <!-- Main Title (Apple-style display scale) -->
           <h1
@@ -218,9 +218,13 @@
             <span class="text-[#1d1d1f]">Hello, BBlock.</span>
           </h1>
 
+          <!-- Subtitle + CTA: tight vertical block -->
+          <div
+            class="flex flex-col items-center gap-2 md:gap-2.5 w-full max-w-[42rem] mx-auto"
+          >
           <!-- Subtitle -->
           <p
-            class="text-[clamp(1.0625rem,2.2vw,1.3125rem)] font-normal text-[#86868b] leading-[1.381] max-w-[28rem] mx-auto"
+            class="text-[clamp(1.0625rem,2.2vw,1.3125rem)] font-normal text-[#86868b] leading-snug max-w-none text-center text-balance"
           >
             Build your flower bed, garden wall or cat & dog house.
           </p>
@@ -228,7 +232,7 @@
           <!-- App Store Buttons -->
           <div
             id="buy"
-            class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 pb-2 scroll-mt-14"
+            class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 md:mt-5 pt-0 pb-0 scroll-mt-14"
           >
             <a
               href="https://buy.stripe.com/dRm9AT1uLfzT8IXgjd0x205"
@@ -246,6 +250,7 @@
                 >
               </div>
             </a>
+          </div>
           </div>
         </div>
 
