@@ -1,4 +1,4 @@
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth font-sans antialiased">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,18 +6,51 @@
       Block chain world - Fully interlock block design for the house.
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            sans: [
+              "-apple-system",
+              "BlinkMacSystemFont",
+              '"SF Pro Text"',
+              '"SF Pro Display"',
+              '"Segoe UI"',
+              "Roboto",
+              '"Helvetica Neue"',
+              "Helvetica",
+              "Arial",
+              "system-ui",
+              "sans-serif",
+              '"Apple Color Emoji"',
+              '"Segoe UI Emoji"',
+            ],
+          },
+        },
+      };
+    </script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap"
-      rel="stylesheet"
-    />
     <style>
+      /* Apple system font stack on document root → tüm sayfa miras alır */
+      html {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+          "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, system-ui,
+          sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      }
       body {
-        font-family: "Inter", sans-serif;
+        font-family: inherit;
         background-color: #ffffff;
-        color: #18181b;
+        color: #1d1d1f;
+        font-size: 17px;
+        line-height: 1.47059;
+        -webkit-font-smoothing: antialiased;
+      }
+      button,
+      input,
+      textarea,
+      select {
+        font-family: inherit;
       }
       /* Hide scrollbar for clean UI */
       .no-scrollbar::-webkit-scrollbar {
@@ -83,7 +116,7 @@
     </style>
   </head>
   <body
-    class="antialiased bg-white selection:bg-emerald-100 selection:text-emerald-900 relative overflow-x-hidden"
+    class="bg-white selection:bg-emerald-100 selection:text-emerald-900 relative overflow-x-hidden"
   >
     <!-- Background Ambient Glows -->
     <div
@@ -103,12 +136,7 @@
       aria-label="Primary"
     >
       <div
-        class="max-w-[1024px] mx-auto h-11 md:h-12 flex items-center justify-between px-4 md:px-6 text-[12px] font-normal tracking-wide"
-        style="
-          font-family:
-            -apple-system, BlinkMacSystemFont, &quot;SF Pro Text&quot;,
-            &quot;Segoe UI&quot;, system-ui, sans-serif;
-        "
+        class="max-w-[1024px] mx-auto h-11 md:h-12 flex items-center justify-between px-4 md:px-6 text-[12px] leading-3 font-normal tracking-wide"
       >
         <a
           href="#product"
@@ -181,18 +209,18 @@
         class="w-full bg-[#F5F5F7] pt-24 md:pt-28 pb-0 flex flex-col items-stretch"
       >
         <div
-          class="max-w-4xl w-full mx-auto px-6 text-center space-y-8 pb-4 reveal active"
+          class="max-w-4xl w-full mx-auto px-6 text-center space-y-6 md:space-y-7 pb-4 reveal active"
         >
-          <!-- Main Title -->
+          <!-- Main Title (Apple-style display scale) -->
           <h1
-            class="md:text-7xl lg:text-8xl leading-[0.95] text-5xl font-medium text-zinc-900 tracking-tight"
+            class="text-[clamp(2.5rem,7vw,5.5rem)] font-semibold text-[#1d1d1f] tracking-[-0.022em] leading-[1.05]"
           >
-            <span class="text-zinc-900">Hello, BBlock.</span>
+            <span class="text-[#1d1d1f]">Hello, BBlock.</span>
           </h1>
 
           <!-- Subtitle -->
           <p
-            class="md:text-xl leading-relaxed text-lg font-light text-zinc-500 max-w-lg mr-auto ml-auto"
+            class="text-[clamp(1.0625rem,2.2vw,1.3125rem)] font-normal text-[#86868b] leading-[1.381] max-w-[28rem] mx-auto"
           >
             Build your flower bed, garden wall or cat & dog house.
           </p>
@@ -206,14 +234,14 @@
               href="https://buy.stripe.com/dRm9AT1uLfzT8IXgjd0x205"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex items-center gap-3 bg-zinc-900 text-white px-5 py-3 rounded-xl hover:bg-zinc-800 hover:-translate-y-0.5 transition-all duration-200 shadow-xl shadow-zinc-900/10 border border-zinc-800"
+              class="group flex items-center gap-3 bg-[#1d1d1f] text-white px-5 py-3 rounded-full hover:bg-[#424245] hover:-translate-y-0.5 transition-all duration-200 shadow-md border border-transparent"
             >
               <img src="images/stripe.svg" class="w-12 h-8" />
-              <div class="flex flex-col items-start leading-none">
-                <span class="text-[10px] text-zinc-400 font-medium"
+              <div class="flex flex-col items-start leading-none gap-0.5">
+                <span class="text-[11px] text-white/70 font-normal leading-tight"
                   >Buy 8 piece</span
                 >
-                <span class="text-sm font-semibold tracking-wide text-white"
+                <span class="text-[15px] font-semibold tracking-tight text-white leading-tight"
                   >99$</span
                 >
               </div>
@@ -236,13 +264,15 @@
     <!-- How It Works (Timeline Section) -->
     <section id="design" class="w-full bg-white scroll-mt-14">
       <div class="max-w-6xl mx-auto pt-32 pb-32 px-6 relative">
-        <div class="mb-24 text-center reveal">
+        <div class="mb-20 md:mb-28 text-center reveal">
           <h2
-            class="text-3xl md:text-4xl font-medium tracking-tight text-zinc-900 mb-4"
+            class="text-[clamp(2rem,4vw,3rem)] font-semibold text-[#1d1d1f] tracking-[-0.015em] leading-[1.08349] mb-4 md:mb-5"
           >
             Lego like design
           </h2>
-          <p class="text-zinc-500 max-w-xl mx-auto">
+          <p
+            class="text-[17px] md:text-[19px] font-normal text-[#86868b] leading-[1.4211] max-w-xl mx-auto"
+          >
             A single-component, interlocking system that stacks dry without
             mortar. Its defining feature is the ability to rotate the standard
             brick 90 degrees to form perfect corners.
@@ -271,11 +301,11 @@
                 >01</span
               >
               <h3
-                class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight"
+                class="text-[21px] md:text-[28px] font-semibold text-[#1d1d1f] mb-2 md:mb-3 tracking-[-0.015em] leading-[1.14286]"
               >
                 Spaces for steel and pipes.
               </h3>
-              <p class="text-zinc-500 leading-relaxed text-sm">
+              <p class="text-[17px] font-normal text-[#86868b] leading-[1.47059]">
                 Designed for strength: The interlocking interface between bricks
                 leaves a calculated void, perfectly dimensioned for M22 iron
                 rods, allowing for invisible but powerful vertical
@@ -308,7 +338,7 @@
                   />
                   <div class="absolute bottom-2 left-2 flex gap-1">
                     <div
-                      class="bg-black/70 backdrop-blur text-white text-[10px] px-1.5 py-0.5 rounded"
+                      class="bg-black/70 backdrop-blur text-white text-[11px] leading-tight font-normal px-1.5 py-0.5 rounded"
                     >
                       22 Metric space
                     </div>
@@ -372,10 +402,10 @@
                       </svg>
                     </button>
                     <div class="flex flex-col items-center">
-                      <span class="text-xs font-semibold text-zinc-900"
+                      <span class="text-[13px] font-semibold text-[#1d1d1f] leading-tight"
                         >90°</span
                       >
-                      <span class="text-[10px] text-zinc-500"
+                      <span class="text-[11px] text-[#86868b] leading-tight font-normal"
                         >For the corners</span
                       >
                     </div>
@@ -416,11 +446,11 @@
                 >02</span
               >
               <h3
-                class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight"
+                class="text-[21px] md:text-[28px] font-semibold text-[#1d1d1f] mb-2 md:mb-3 tracking-[-0.015em] leading-[1.14286]"
               >
                 90° for corners.
               </h3>
-              <p class="text-zinc-500 leading-relaxed text-sm">
+              <p class="text-[17px] font-normal text-[#86868b] leading-[1.47059]">
                 Rotate to create. Use the same brick horizontally for walls or
                 turn it 90° to craft perfect corners. No special pieces
                 required—just one shape that unlocks infinite design
@@ -443,11 +473,11 @@
                 >03</span
               >
               <h3
-                class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight"
+                class="text-[21px] md:text-[28px] font-semibold text-[#1d1d1f] mb-2 md:mb-3 tracking-[-0.015em] leading-[1.14286]"
               >
                 3D Printed re-usable ABS molds.
               </h3>
-              <p class="text-zinc-500 leading-relaxed text-sm">
+              <p class="text-[17px] font-normal text-[#86868b] leading-[1.47059]">
                 When concrete is poured into molds, the most critical factor is
                 preserving the exact geometry every time. However, during
                 demolding, the mold must also be flexible enough to deform
@@ -470,7 +500,7 @@
               >
                 <div class="flex items-center justify-between">
                   <span
-                    class="text-xs font-medium text-zinc-500 uppercase tracking-wider"
+                    class="text-[11px] font-semibold text-[#86868b] uppercase tracking-[0.06em]"
                     >ABS & PLA MOLD</span
                   >
                   <div
@@ -488,10 +518,10 @@
                     class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200 to-orange-300 flex items-center justify-center text-white font-bold text-xs shadow-inner"
                   ></div>
                   <div>
-                    <h4 class="text-sm font-semibold text-zinc-900">
+                    <h4 class="text-[15px] font-semibold text-[#1d1d1f] leading-snug">
                       Flexible and reusable
                     </h4>
-                    <p class="text-[10px] text-zinc-500">
+                    <p class="text-[12px] text-[#86868b] leading-normal font-normal">
                       We allways need fully autonomous houses.
                     </p>
                   </div>
@@ -558,11 +588,11 @@
               ></path>
               <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path>
             </svg>
-            <span class="text-lg font-semibold text-zinc-900 tracking-tight"
+            <span class="text-[19px] font-semibold text-[#1d1d1f] tracking-[-0.01em]"
               >OMGBBQHAX LLC.</span
             >
           </div>
-          <p class="text-zinc-500 text-xs max-w-xs leading-relaxed">
+          <p class="text-[12px] text-[#86868b] max-w-xs leading-[1.33337] font-normal">
             Redefining luxury real estate in apple store through design,
             3DPrinted molds.
           </p>
@@ -571,34 +601,34 @@
         <div class="flex gap-16">
           <div class="flex flex-col gap-3">
             <span
-              class="text-[10px] font-semibold text-zinc-900 uppercase tracking-wider"
+              class="text-[12px] font-semibold text-[#1d1d1f] uppercase tracking-[0.06em]"
               >Company</span
             >
             <a
               href="#"
-              class="text-xs text-zinc-500 hover:text-zinc-900 transition-colors"
+              class="text-[12px] text-[#424245] hover:text-[#1d1d1f] transition-colors font-normal"
               >About</a
             >
             <a
               href="#"
-              class="text-xs text-zinc-500 hover:text-zinc-900 transition-colors"
+              class="text-[12px] text-[#424245] hover:text-[#1d1d1f] transition-colors font-normal"
               >Journal</a
             >
             <a
               href="#"
-              class="text-xs text-zinc-500 hover:text-zinc-900 transition-colors"
+              class="text-[12px] text-[#424245] hover:text-[#1d1d1f] transition-colors font-normal"
               >Contact</a
             >
           </div>
         </div>
       </div>
       <div
-        class="max-w-7xl mx-auto mt-16 pt-8 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-zinc-400"
+        class="max-w-7xl mx-auto mt-16 pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-[#86868b] font-normal"
       >
         <span>© 2025 OMGBBQHAX LLC. All rights reserved.</span>
         <div class="flex gap-4">
-          <a href="#" class="hover:text-zinc-800">Privacy Policy</a>
-          <a href="#" class="hover:text-zinc-800">Terms of Service</a>
+          <a href="#" class="hover:text-[#1d1d1f] transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-[#1d1d1f] transition-colors">Terms of Service</a>
         </div>
       </div>
     </footer>
