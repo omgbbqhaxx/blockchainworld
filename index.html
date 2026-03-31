@@ -67,10 +67,23 @@
       .delay-300 {
         transition-delay: 300ms;
       }
+      /* Apple-style nav blur */
+      .nav-apple {
+        background-color: rgba(255, 255, 255, 0.72);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+      }
+      @supports not (
+        (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
+      ) {
+        .nav-apple {
+          background-color: rgba(255, 255, 255, 0.96);
+        }
+      }
     </style>
   </head>
   <body
-    class="antialiased selection:bg-emerald-100 selection:text-emerald-900 relative overflow-x-hidden"
+    class="antialiased bg-white selection:bg-emerald-100 selection:text-emerald-900 relative overflow-x-hidden"
   >
     <!-- Background Ambient Glows -->
     <div
@@ -84,16 +97,23 @@
       ></div>
     </div>
 
-    <!-- Navigation (Fixed Centering) -->
-    <!-- Changed: Removed 'left-1/2 -translate-x-1/2' and used 'w-full flex justify-center' to avoid transform conflict -->
+    <!-- Navigation (Apple-style bar) -->
     <nav
-      class="fixed top-6 inset-x-0 z-50 flex justify-center pointer-events-none"
+      class="nav-apple fixed top-0 inset-x-0 z-50 border-b border-black/[0.08]"
+      aria-label="Primary"
     >
       <div
-        class="pointer-events-auto reveal-scale active flex items-center gap-1 p-1.5 pl-4 pr-1.5 bg-white/80 backdrop-blur-xl border border-zinc-200/50 rounded-full shadow-xl shadow-zinc-200/40 ring-1 ring-white/50"
+        class="max-w-[1024px] mx-auto h-11 md:h-12 flex items-center justify-between px-4 md:px-6 text-[12px] font-normal tracking-wide"
+        style="
+          font-family:
+            -apple-system, BlinkMacSystemFont, &quot;SF Pro Text&quot;,
+            &quot;Segoe UI&quot;, system-ui, sans-serif;
+        "
       >
-        <!-- Logo -->
-        <div class="flex items-center gap-2 mr-6">
+        <a
+          href="#product"
+          class="flex items-center gap-2 text-[#1d1d1f] hover:opacity-70 transition-opacity shrink-0"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -105,7 +125,7 @@
             stroke-linecap="round"
             stroke-linejoin="round"
             data-lucide="palmtree"
-            class="lucide lucide-palmtree w-4 h-4 text-emerald-600 stroke-[1.5]"
+            class="lucide lucide-palmtree w-[15px] h-[15px] text-emerald-600 stroke-[1.5]"
           >
             <path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"></path>
             <path
@@ -116,482 +136,391 @@
             ></path>
             <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path>
           </svg>
-          <span class="text-sm font-semibold tracking-tight text-zinc-900"
-            ><bold>OMGBBQHAX </bold>LLC</span
-          >
-        </div>
+          <span class="font-semibold tracking-tight">OMGBBQHAX LLC</span>
+        </a>
 
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <ul
+          class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-[#1d1d1f]/88"
+        >
+          <li>
+            <a
+              href="#product"
+              class="hover:text-[#1d1d1f] transition-colors whitespace-nowrap"
+              >Overview</a
+            >
+          </li>
+          <li>
+            <a
+              href="#design"
+              class="hover:text-[#1d1d1f] transition-colors whitespace-nowrap"
+              >Design</a
+            >
+          </li>
+          <li>
+            <a
+              href="#buy"
+              class="hover:text-[#1d1d1f] transition-colors whitespace-nowrap"
+              >Buy</a
+            >
+          </li>
+        </ul>
+
         <a
           href="https://substack.com/@interlockingbricks"
           target="_blank"
           rel="noopener noreferrer"
-          class="group relative ml-2 inline-flex items-center justify-center overflow-hidden rounded-xl p-[1px] transition-transform duration-300 hover:scale-105 shadow-lg shadow-zinc-900/20"
+          class="text-[#1d1d1f]/88 hover:text-[#1d1d1f] transition-colors shrink-0"
+          >Blog</a
         >
-          <span
-            class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ef4444_0%,#f97316_14.2%,#eab308_28.4%,#22c55e_42.6%,#3b82f6_56.8%,#6366f1_71%,#a855f7_85.2%,#ef4444_100%)]"
-          ></span>
-          <span
-            class="inline-flex h-full w-full items-center justify-center gap-2 rounded-xl bg-zinc-900/80 px-5 py-2.5 text-xs font-medium text-white backdrop-blur-xl transition-all group-hover:bg-zinc-900/70"
-          >
-            Check to blog.
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-arrow-right w-3 h-3"
-            >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </span>
-        </a>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section
-      class="min-h-[90vh] flex flex-col w-full pt-20 pr-6 pl-6 relative items-center justify-center"
-    >
-      <!-- Subtle Grid Background -->
+    <!-- Hero: one full-width #F5F5F7 canvas (Apple-style) through image bottom; white below -->
+    <section id="product" class="w-full scroll-mt-14 relative isolate">
       <div
-        class="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"
-      ></div>
-
-      <div
-        class="max-w-4xl w-full text-center space-y-8 relative z-10 reveal active"
+        class="w-full bg-[#F5F5F7] pt-24 md:pt-28 pb-0 flex flex-col items-stretch"
       >
-        <!-- Badge -->
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-50/50 text-emerald-700 text-[10px] font-medium tracking-wider uppercase mt-8"
+          class="max-w-4xl w-full mx-auto px-6 text-center space-y-8 pb-4 reveal active"
         >
-          <span
-            class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
-          ></span>
-          3D-Printed MOLDS.
-        </div>
-
-        <!-- Main Title -->
-        <h1
-          class="md:text-7xl lg:text-8xl leading-[0.95] text-5xl font-medium text-zinc-900 tracking-tight"
-        >
-          Interlock. Lego. <br />
-          <span class="text-zinc-400">Brick.</span>
-        </h1>
-
-        <!-- Subtitle -->
-        <p
-          class="md:text-xl leading-relaxed text-lg font-light text-zinc-500 max-w-lg mr-auto ml-auto"
-        >
-          The first 3D printed molds for the wall and house creation. Build your
-          own house with bchain brick model.
-        </p>
-
-        <!-- App Store Buttons -->
-        <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 pb-2"
-        >
-          <!-- Stripe Checkout - 75$ (Test) -->
-          <a
-            href="https://buy.stripe.com/dRm9AT1uLfzT8IXgjd0x205"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex items-center gap-3 bg-zinc-900 text-white px-5 py-3 rounded-xl hover:bg-zinc-800 hover:-translate-y-0.5 transition-all duration-200 shadow-xl shadow-zinc-900/10 border border-zinc-800"
+          <!-- Main Title -->
+          <h1
+            class="md:text-7xl lg:text-8xl leading-[0.95] text-5xl font-medium text-zinc-900 tracking-tight"
           >
-            <img src="images/stripe.svg" class="w-12 h-8" />
-            <div class="flex flex-col items-start leading-none">
-              <span class="text-[10px] text-zinc-400 font-medium"
-                >Buy 9 piece</span
-              >
-              <span class="text-sm font-semibold tracking-wide text-white"
-                >99$</span
-              >
-            </div>
-          </a>
+            <span class="text-zinc-900">Hello, BBlock.</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p
+            class="md:text-xl leading-relaxed text-lg font-light text-zinc-500 max-w-lg mr-auto ml-auto"
+          >
+            Build your flower bed, garden wall or cat & dog house.
+          </p>
+
+          <!-- App Store Buttons -->
+          <div
+            id="buy"
+            class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 pb-2 scroll-mt-14"
+          >
+            <a
+              href="https://buy.stripe.com/dRm9AT1uLfzT8IXgjd0x205"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-3 bg-zinc-900 text-white px-5 py-3 rounded-xl hover:bg-zinc-800 hover:-translate-y-0.5 transition-all duration-200 shadow-xl shadow-zinc-900/10 border border-zinc-800"
+            >
+              <img src="images/stripe.svg" class="w-12 h-8" />
+              <div class="flex flex-col items-start leading-none">
+                <span class="text-[10px] text-zinc-400 font-medium"
+                  >Buy 8 piece</span
+                >
+                <span class="text-sm font-semibold tracking-wide text-white"
+                  >99$</span
+                >
+              </div>
+            </a>
+          </div>
         </div>
 
-        <!-- Floating Hero Visual (Holo Style) -->
         <div
-          class="mt-12 w-full max-w-5xl aspect-[16/8] relative rounded-3xl overflow-hidden border border-zinc-200/50 shadow-2xl shadow-emerald-900/5 group bg-zinc-100 reveal delay-200 active"
+          class="w-full max-w-5xl mx-auto px-6 mt-8 md:mt-12 reveal delay-200 active bg-[#F5F5F7]"
         >
           <img
             src="images/b2.png"
-            class="w-full h-full object-cover opacity-95 group-hover:scale-105 transition-transform duration-1000 ease-in-out"
+            alt="Interlocking brick mold visualization"
+            class="w-full h-auto block bg-[#F5F5F7]"
           />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-          ></div>
-
-          <!-- Interface Elements -->
-          <div
-            class="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex flex-col gap-2"
-          >
-            <span
-              class="px-2 py-1 bg-white/90 backdrop-blur border border-white/20 rounded text-[10px] text-zinc-900 font-semibold uppercase tracking-widest self-start shadow-sm"
-              >Turkey</span
-            >
-            <h3
-              class="text-2xl md:text-3xl font-medium text-white tracking-tight drop-shadow-sm"
-            >
-              Alaçatı, Port
-            </h3>
-            <div
-              class="flex items-center gap-4 text-xs text-white/90 font-medium"
-            >
-              <span class="flex items-center gap-1"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  data-lucide="tag"
-                  class="lucide lucide-tag w-3 h-3"
-                >
-                  <path
-                    d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
-                  ></path>
-                  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
-                </svg>
-                $10.000</span
-              >
-              <span class="flex items-center gap-1"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  data-lucide="bed"
-                  class="lucide lucide-bed w-3 h-3"
-                >
-                  <path d="M2 4v16"></path>
-                  <path d="M2 8h18a2 2 0 0 1 2 2v10"></path>
-                  <path d="M2 17h20"></path>
-                  <path d="M6 8v9"></path>
-                </svg>
-                1 Bed</span
-              >
-              <span class="flex items-center gap-1"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  data-lucide="maximize"
-                  class="lucide lucide-maximize w-3 h-3"
-                >
-                  <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
-                  <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
-                  <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
-                  <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
-                </svg>
-                12m²</span
-              >
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- How It Works (Timeline Section) -->
-    <section class="max-w-6xl mr-auto ml-auto pt-32 pr-6 pb-32 pl-6 relative">
-      <div class="mb-24 text-center reveal">
-        <h2
-          class="text-3xl md:text-4xl font-medium tracking-tight text-zinc-900 mb-4"
-        >
-          Lego like design
-        </h2>
-        <p class="text-zinc-500 max-w-xl mx-auto">
-          A single-component, interlocking system that stacks dry without
-          mortar. Its defining feature is the ability to rotate the standard
-          brick 90 degrees to form perfect corners.
-        </p>
-      </div>
-
-      <div class="relative">
-        <!-- Continuous Vertical Line -->
-        <div
-          class="absolute left-0 md:left-[50%] top-0 bottom-0 w-[1px] timeline-gradient hidden md:block opacity-30"
-        ></div>
-
-        <!-- Step 01 -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-32 relative"
-        >
-          <!-- Text Content -->
-          <div class="relative pl-8 md:pl-0 md:text-right md:pr-12 reveal">
-            <!-- Mobile Line -->
-            <div
-              class="absolute left-0 top-0 bottom-0 w-[2px] bg-emerald-400 md:hidden"
-            ></div>
-
-            <span
-              class="text-5xl font-medium text-emerald-500/20 absolute -top-12 left-8 md:right-12 md:left-auto"
-              >01</span
-            >
-            <h3 class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight">
-              Spaces for steel and pipes.
-            </h3>
-            <p class="text-zinc-500 leading-relaxed text-sm">
-              Designed for strength: The interlocking interface between bricks
-              leaves a calculated void, perfectly dimensioned for M22 iron rods,
-              allowing for invisible but powerful vertical reinforcement.
-            </p>
-          </div>
-          <!-- Visual Content -->
-          <div class="relative group reveal-scale delay-200">
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-emerald-100 to-teal-50 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500"
-            ></div>
-            <div
-              class="relative bg-white border border-zinc-100 rounded-2xl p-6 shadow-xl shadow-zinc-200/50"
-            >
-              <!-- Abstract Phone UI -->
-              <div
-                class="flex items-center justify-between mb-4 border-b border-zinc-50 pb-4"
-              >
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                  <div class="h-2 w-20 bg-zinc-100 rounded-full"></div>
-                </div>
-              </div>
-              <div
-                class="aspect-[4/3] bg-zinc-50 rounded-lg mb-4 relative overflow-hidden flex items-center justify-center border border-zinc-100"
-              >
-                <img
-                  src="images/dik.JPG"
-                  class="opacity-80 w-full h-full object-cover"
-                />
-                <div class="absolute bottom-2 left-2 flex gap-1">
-                  <div
-                    class="bg-black/70 backdrop-blur text-white text-[10px] px-1.5 py-0.5 rounded"
-                  >
-                    22 Metric space
-                  </div>
-                </div>
-              </div>
-              <div class="h-2 w-3/4 bg-zinc-100 rounded-full mb-2"></div>
-              <div class="h-2 w-1/2 bg-zinc-100 rounded-full"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 02 -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-32 relative"
-        >
-          <!-- Visual Content (Left on Desktop) -->
-          <div class="relative group order-2 md:order-1 reveal-scale">
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-indigo-100 to-violet-50 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500"
-            ></div>
-            <div class="relative h-64 w-full max-w-sm mx-auto">
-              <!-- Bottom Card -->
-              <div
-                class="absolute top-4 left-4 right-4 bottom-0 bg-white border border-zinc-100 rounded-2xl shadow-sm transform scale-95 opacity-50"
-              ></div>
-              <!-- Middle Card -->
-              <div
-                class="absolute top-2 left-2 right-2 bottom-2 bg-white border border-zinc-100 rounded-2xl shadow-md transform scale-98 opacity-80"
-              ></div>
-              <!-- Top Card -->
-              <div
-                class="absolute inset-0 bg-white border border-zinc-100 rounded-2xl shadow-xl p-4 flex flex-col justify-between transform group-hover:rotate-1 transition-transform duration-300"
-              >
-                <div
-                  class="h-32 bg-zinc-100 rounded-lg overflow-hidden relative"
-                >
-                  <img
-                    src="images/corner.JPG"
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-                <div class="flex justify-between items-center mt-2 px-4">
-                  <button
-                    class="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 hover:bg-rose-50 hover:text-rose-500 hover:border-rose-200 transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      data-lucide="x"
-                      class="lucide lucide-x w-4 h-4"
-                    >
-                      <path d="M18 6 6 18"></path>
-                      <path d="m6 6 12 12"></path>
-                    </svg>
-                  </button>
-                  <div class="flex flex-col items-center">
-                    <span class="text-xs font-semibold text-zinc-900">90°</span>
-                    <span class="text-[10px] text-zinc-500"
-                      >For the corners</span
-                    >
-                  </div>
-                  <button
-                    class="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 hover:bg-emerald-50 hover:text-emerald-500 hover:border-emerald-200 transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      data-lucide="heart"
-                      class="lucide lucide-heart w-4 h-4"
-                    >
-                      <path
-                        d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Text Content -->
-          <div
-            class="relative pl-8 md:pl-12 order-1 md:order-2 reveal delay-200"
+    <section id="design" class="w-full bg-white scroll-mt-14">
+      <div class="max-w-6xl mx-auto pt-32 pb-32 px-6 relative">
+        <div class="mb-24 text-center reveal">
+          <h2
+            class="text-3xl md:text-4xl font-medium tracking-tight text-zinc-900 mb-4"
           >
-            <div
-              class="absolute left-0 top-0 bottom-0 w-[2px] bg-indigo-400 md:hidden"
-            ></div>
-            <span
-              class="text-5xl font-medium text-indigo-500/20 absolute -top-12 left-8 md:left-12"
-              >02</span
-            >
-            <h3 class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight">
-              90° for corners.
-            </h3>
-            <p class="text-zinc-500 leading-relaxed text-sm">
-              Rotate to create. Use the same brick horizontally for walls or
-              turn it 90° to craft perfect corners. No special pieces
-              required—just one shape that unlocks infinite design
-              possibilities.
-            </p>
-          </div>
+            Lego like design
+          </h2>
+          <p class="text-zinc-500 max-w-xl mx-auto">
+            A single-component, interlocking system that stacks dry without
+            mortar. Its defining feature is the ability to rotate the standard
+            brick 90 degrees to form perfect corners.
+          </p>
         </div>
 
-        <!-- Step 03 -->
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-32 relative"
-        >
-          <!-- Text Content -->
-          <div class="relative pl-8 md:pl-0 md:text-right md:pr-12 reveal">
-            <div
-              class="absolute left-0 top-0 bottom-0 w-[2px] bg-violet-400 md:hidden"
-            ></div>
-            <span
-              class="text-5xl font-medium text-violet-500/20 absolute -top-12 left-8 md:right-12 md:left-auto"
-              >03</span
-            >
-            <h3 class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight">
-              3D Printed re-usable ABS molds.
-            </h3>
-            <p class="text-zinc-500 leading-relaxed text-sm">
-              When concrete is poured into molds, the most critical factor is
-              preserving the exact geometry every time. However, during
-              demolding, the mold must also be flexible enough to deform
-              slightly so the cast can be removed without damage — and then
-              return precisely to its original shape. This balance between
-              elasticity and dimensional stability is essential. Fully
-              ABS-based, specially tuned mold walls provide the flexibility
-              needed for easy release, while the rigid PLA base layer ensures
-              that the structure always snaps back to its exact original
-              position after each use.
-            </p>
-          </div>
-          <!-- Visual Content -->
-          <div class="relative group reveal-scale delay-200">
-            <div
-              class="absolute -inset-1 bg-gradient-to-r from-violet-100 to-fuchsia-50 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500"
-            ></div>
-            <div
-              class="relative bg-white border border-zinc-100 rounded-2xl p-6 shadow-xl shadow-zinc-200/50 flex flex-col gap-4"
-            >
-              <div class="flex items-center justify-between">
-                <span
-                  class="text-xs font-medium text-zinc-500 uppercase tracking-wider"
-                  >ABS & PLA MOLD</span
-                >
+        <div class="relative">
+          <!-- Continuous Vertical Line -->
+          <div
+            class="absolute left-0 md:left-[50%] top-0 bottom-0 w-[1px] timeline-gradient hidden md:block opacity-30"
+          ></div>
+
+          <!-- Step 01 -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-32 relative"
+          >
+            <!-- Text Content -->
+            <div class="relative pl-8 md:pl-0 md:text-right md:pr-12 reveal">
+              <!-- Mobile Line -->
+              <div
+                class="absolute left-0 top-0 bottom-0 w-[2px] bg-emerald-400 md:hidden"
+              ></div>
+
+              <span
+                class="text-5xl font-medium text-emerald-500/20 absolute -top-12 left-8 md:right-12 md:left-auto"
+                >01</span
+              >
+              <h3
+                class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight"
+              >
+                Spaces for steel and pipes.
+              </h3>
+              <p class="text-zinc-500 leading-relaxed text-sm">
+                Designed for strength: The interlocking interface between bricks
+                leaves a calculated void, perfectly dimensioned for M22 iron
+                rods, allowing for invisible but powerful vertical
+                reinforcement.
+              </p>
+            </div>
+            <!-- Visual Content -->
+            <div class="relative group reveal-scale delay-200">
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-emerald-100 to-teal-50 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500"
+              ></div>
+              <div
+                class="relative bg-white border border-zinc-100 rounded-2xl p-6 shadow-xl shadow-zinc-200/50"
+              >
+                <!-- Abstract Phone UI -->
                 <div
-                  class="relative w-10 h-6 bg-violet-500 rounded-full transition-colors cursor-pointer"
+                  class="flex items-center justify-between mb-4 border-b border-zinc-50 pb-4"
+                >
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <div class="h-2 w-20 bg-zinc-100 rounded-full"></div>
+                  </div>
+                </div>
+                <div
+                  class="aspect-[4/3] bg-zinc-50 rounded-lg mb-4 relative overflow-hidden flex items-center justify-center border border-zinc-100"
+                >
+                  <img
+                    src="images/dik.JPG"
+                    class="opacity-80 w-full h-full object-cover"
+                  />
+                  <div class="absolute bottom-2 left-2 flex gap-1">
+                    <div
+                      class="bg-black/70 backdrop-blur text-white text-[10px] px-1.5 py-0.5 rounded"
+                    >
+                      22 Metric space
+                    </div>
+                  </div>
+                </div>
+                <div class="h-2 w-3/4 bg-zinc-100 rounded-full mb-2"></div>
+                <div class="h-2 w-1/2 bg-zinc-100 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-32 relative"
+          >
+            <!-- Visual Content (Left on Desktop) -->
+            <div class="relative group order-2 md:order-1 reveal-scale">
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-indigo-100 to-violet-50 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500"
+              ></div>
+              <div class="relative h-64 w-full max-w-sm mx-auto">
+                <!-- Bottom Card -->
+                <div
+                  class="absolute top-4 left-4 right-4 bottom-0 bg-white border border-zinc-100 rounded-2xl shadow-sm transform scale-95 opacity-50"
+                ></div>
+                <!-- Middle Card -->
+                <div
+                  class="absolute top-2 left-2 right-2 bottom-2 bg-white border border-zinc-100 rounded-2xl shadow-md transform scale-98 opacity-80"
+                ></div>
+                <!-- Top Card -->
+                <div
+                  class="absolute inset-0 bg-white border border-zinc-100 rounded-2xl shadow-xl p-4 flex flex-col justify-between transform group-hover:rotate-1 transition-transform duration-300"
                 >
                   <div
-                    class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm"
-                  ></div>
+                    class="h-32 bg-zinc-100 rounded-lg overflow-hidden relative"
+                  >
+                    <img
+                      src="images/corner.JPG"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div class="flex justify-between items-center mt-2 px-4">
+                    <button
+                      class="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 hover:bg-rose-50 hover:text-rose-500 hover:border-rose-200 transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        data-lucide="x"
+                        class="lucide lucide-x w-4 h-4"
+                      >
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                      </svg>
+                    </button>
+                    <div class="flex flex-col items-center">
+                      <span class="text-xs font-semibold text-zinc-900"
+                        >90°</span
+                      >
+                      <span class="text-[10px] text-zinc-500"
+                        >For the corners</span
+                      >
+                    </div>
+                    <button
+                      class="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 hover:bg-emerald-50 hover:text-emerald-500 hover:border-emerald-200 transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        data-lucide="heart"
+                        class="lucide lucide-heart w-4 h-4"
+                      >
+                        <path
+                          d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
+            </div>
+            <!-- Text Content -->
+            <div
+              class="relative pl-8 md:pl-12 order-1 md:order-2 reveal delay-200"
+            >
               <div
-                class="flex items-center gap-4 p-3 bg-zinc-50 rounded-xl border border-zinc-100"
+                class="absolute left-0 top-0 bottom-0 w-[2px] bg-indigo-400 md:hidden"
+              ></div>
+              <span
+                class="text-5xl font-medium text-indigo-500/20 absolute -top-12 left-8 md:left-12"
+                >02</span
               >
-                <div
-                  class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200 to-orange-300 flex items-center justify-center text-white font-bold text-xs shadow-inner"
-                ></div>
-                <div>
-                  <h4 class="text-sm font-semibold text-zinc-900">
-                    Flexible and reusable
-                  </h4>
-                  <p class="text-[10px] text-zinc-500">
-                    We allways need fully autonomous houses.
-                  </p>
+              <h3
+                class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight"
+              >
+                90° for corners.
+              </h3>
+              <p class="text-zinc-500 leading-relaxed text-sm">
+                Rotate to create. Use the same brick horizontally for walls or
+                turn it 90° to craft perfect corners. No special pieces
+                required—just one shape that unlocks infinite design
+                possibilities.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center mb-32 relative"
+          >
+            <!-- Text Content -->
+            <div class="relative pl-8 md:pl-0 md:text-right md:pr-12 reveal">
+              <div
+                class="absolute left-0 top-0 bottom-0 w-[2px] bg-violet-400 md:hidden"
+              ></div>
+              <span
+                class="text-5xl font-medium text-violet-500/20 absolute -top-12 left-8 md:right-12 md:left-auto"
+                >03</span
+              >
+              <h3
+                class="text-2xl font-medium text-zinc-900 mb-3 tracking-tight"
+              >
+                3D Printed re-usable ABS molds.
+              </h3>
+              <p class="text-zinc-500 leading-relaxed text-sm">
+                When concrete is poured into molds, the most critical factor is
+                preserving the exact geometry every time. However, during
+                demolding, the mold must also be flexible enough to deform
+                slightly so the cast can be removed without damage — and then
+                return precisely to its original shape. This balance between
+                elasticity and dimensional stability is essential. Fully
+                ABS-based, specially tuned mold walls provide the flexibility
+                needed for easy release, while the rigid PLA base layer ensures
+                that the structure always snaps back to its exact original
+                position after each use.
+              </p>
+            </div>
+            <!-- Visual Content -->
+            <div class="relative group reveal-scale delay-200">
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-violet-100 to-fuchsia-50 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-500"
+              ></div>
+              <div
+                class="relative bg-white border border-zinc-100 rounded-2xl p-6 shadow-xl shadow-zinc-200/50 flex flex-col gap-4"
+              >
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-xs font-medium text-zinc-500 uppercase tracking-wider"
+                    >ABS & PLA MOLD</span
+                  >
+                  <div
+                    class="relative w-10 h-6 bg-violet-500 rounded-full transition-colors cursor-pointer"
+                  >
+                    <div
+                      class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm"
+                    ></div>
+                  </div>
                 </div>
-              </div>
-              <div class="grid grid-cols-3 gap-2">
                 <div
-                  class="h-16 rounded-lg bg-zinc-100 overflow-hidden relative group-hover:scale-105 transition-transform"
+                  class="flex items-center gap-4 p-3 bg-zinc-50 rounded-xl border border-zinc-100"
                 >
-                  <img
-                    src="images/mone.png"
-                    class="object-cover w-full h-full"
-                  />
+                  <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200 to-orange-300 flex items-center justify-center text-white font-bold text-xs shadow-inner"
+                  ></div>
+                  <div>
+                    <h4 class="text-sm font-semibold text-zinc-900">
+                      Flexible and reusable
+                    </h4>
+                    <p class="text-[10px] text-zinc-500">
+                      We allways need fully autonomous houses.
+                    </p>
+                  </div>
                 </div>
-                <div
-                  class="h-16 rounded-lg bg-zinc-100 overflow-hidden relative group-hover:scale-105 transition-transform delay-75"
-                >
-                  <img
-                    src="images/mtwo.png"
-                    class="object-cover w-full h-full"
-                  />
-                </div>
-                <div
-                  class="h-16 rounded-lg bg-zinc-100 overflow-hidden relative group-hover:scale-105 transition-transform delay-150"
-                >
-                  <img
-                    src="images/next.PNG"
-                    class="object-cover w-full h-full"
-                  />
+                <div class="grid grid-cols-3 gap-2">
+                  <div
+                    class="h-16 rounded-lg bg-zinc-100 overflow-hidden relative group-hover:scale-105 transition-transform"
+                  >
+                    <img
+                      src="images/mone.png"
+                      class="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div
+                    class="h-16 rounded-lg bg-zinc-100 overflow-hidden relative group-hover:scale-105 transition-transform delay-75"
+                  >
+                    <img
+                      src="images/mtwo.png"
+                      class="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div
+                    class="h-16 rounded-lg bg-zinc-100 overflow-hidden relative group-hover:scale-105 transition-transform delay-150"
+                  >
+                    <img
+                      src="images/mone.PNG"
+                      class="object-cover w-full h-full"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
