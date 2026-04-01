@@ -203,16 +203,39 @@
       </div>
     </nav>
 
-    <!-- Hero: min full viewport; hand image pinned to bottom of screen when space allows -->
+    <!-- Hero: md+ = full viewport + image at bottom; mobile = tighter stack + safe area -->
     <section
       id="product"
-      class="w-full scroll-mt-14 relative isolate min-h-[100svh] flex flex-col"
+      class="w-full scroll-mt-14 relative isolate flex flex-col md:min-h-[100svh]"
     >
       <div
-        class="w-full flex-1 flex flex-col bg-[#F5F5F7] pt-24 md:pt-28 pb-0 min-h-0 items-stretch"
+        class="relative w-full md:flex-1 flex flex-col bg-[#F5F5F7] pt-24 md:pt-28 pb-0 min-h-0 items-stretch overflow-hidden"
       >
+        <!-- Soft “ground”: full width/height, vw-wide radial so it never clips on ultrawide/tall -->
         <div
-          class="max-w-4xl w-full mx-auto px-6 pb-4 shrink-0 reveal active flex flex-col items-center gap-4 md:gap-5"
+          class="pointer-events-none absolute inset-0 z-0 w-full min-h-full overflow-hidden"
+          aria-hidden="true"
+        >
+          <div
+            class="absolute inset-0 w-full min-h-full bg-[radial-gradient(ellipse_220vw_125%_at_50%_100%,#d9d9df_0%,#e4e4e9_22%,#ececef_45%,#f1f1f3_62%,#F5F5F7_82%)]"
+          ></div>
+          <div
+            class="absolute inset-x-0 bottom-0 top-0 w-full min-h-full opacity-[0.35] bg-[linear-gradient(to_top,#c8c8cf_0%,transparent_42%)] mix-blend-multiply"
+          ></div>
+          <svg
+            class="absolute bottom-0 left-0 w-full min-w-full h-[4.5rem] sm:h-[5.5rem] md:h-[7rem] text-[#c4c4ca]/55"
+            viewBox="0 0 1200 80"
+            preserveAspectRatio="none"
+            fill="currentColor"
+          >
+            <path
+              d="M0,40 C200,8 400,72 600,40 C800,8 1000,72 1200,40 L1200,80 L0,80 Z"
+            />
+          </svg>
+        </div>
+
+        <div
+          class="relative z-10 max-w-4xl w-full mx-auto px-6 pb-4 shrink-0 reveal active flex flex-col items-center gap-4 md:gap-5"
         >
           <!-- Main Title (Apple-style display scale) -->
           <h1
@@ -258,12 +281,12 @@
         </div>
 
         <div
-          class="w-full max-w-5xl mx-auto px-6 mt-auto pt-4 md:pt-6 shrink-0 reveal delay-200 active bg-[#F5F5F7]"
+          class="relative z-10 w-full max-w-5xl mx-auto px-6 mt-6 pt-2 md:mt-auto md:pt-4 lg:pt-6 shrink-0 reveal delay-200 active bg-transparent pb-[max(0.75rem,env(safe-area-inset-bottom))]"
         >
           <img
             src="images/b2.png"
             alt="Interlocking brick mold visualization"
-            class="w-full h-auto block bg-[#F5F5F7]"
+            class="w-full h-auto block bg-transparent"
           />
         </div>
       </div>
