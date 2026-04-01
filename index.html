@@ -203,13 +203,16 @@
       </div>
     </nav>
 
-    <!-- Hero: one full-width #F5F5F7 canvas (Apple-style) through image bottom; white below -->
-    <section id="product" class="w-full scroll-mt-14 relative isolate">
+    <!-- Hero: min full viewport; hand image pinned to bottom of screen when space allows -->
+    <section
+      id="product"
+      class="w-full scroll-mt-14 relative isolate min-h-[100svh] flex flex-col"
+    >
       <div
-        class="w-full bg-[#F5F5F7] pt-24 md:pt-28 pb-0 flex flex-col items-stretch"
+        class="w-full flex-1 flex flex-col bg-[#F5F5F7] pt-24 md:pt-28 pb-0 min-h-0 items-stretch"
       >
         <div
-          class="max-w-4xl w-full mx-auto px-6 pb-4 reveal active flex flex-col items-center gap-4 md:gap-5"
+          class="max-w-4xl w-full mx-auto px-6 pb-4 shrink-0 reveal active flex flex-col items-center gap-4 md:gap-5"
         >
           <!-- Main Title (Apple-style display scale) -->
           <h1
@@ -255,7 +258,7 @@
         </div>
 
         <div
-          class="w-full max-w-5xl mx-auto px-6 mt-8 md:mt-12 reveal delay-200 active bg-[#F5F5F7]"
+          class="w-full max-w-5xl mx-auto px-6 mt-auto pt-4 md:pt-6 shrink-0 reveal delay-200 active bg-[#F5F5F7]"
         >
           <img
             src="images/b2.png"
