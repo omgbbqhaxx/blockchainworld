@@ -5,6 +5,8 @@
     <title>
       Block chain world - Fully interlock block design for the house.
     </title>
+    <link rel="icon" href="images/logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="images/logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -113,6 +115,21 @@
           background-color: rgba(255, 255, 255, 0.96);
         }
       }
+      /* Hero image: bir kez hafif büyü → sonra sabit (döngü yok) */
+      @keyframes hero-hand-once {
+        0% {
+          transform: translate3d(0, 6px, 0) scale(0.96);
+        }
+        100% {
+          transform: translate3d(0, 6px, 0) scale(1);
+        }
+      }
+      .hero-hand-wrap {
+        transform-origin: center bottom;
+        transform: translate3d(0, 6px, 0) scale(0.96);
+        animation: hero-hand-once 1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s
+          forwards;
+      }
     </style>
   </head>
   <body
@@ -140,31 +157,17 @@
       >
         <a
           href="#product"
-          class="flex items-center gap-2 text-[#1d1d1f] hover:opacity-70 transition-opacity shrink-0"
+          class="flex items-center text-[#1d1d1f] hover:opacity-80 transition-opacity shrink-0"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            data-lucide="palmtree"
-            class="lucide lucide-palmtree w-[15px] h-[15px] text-emerald-600 stroke-[1.5]"
-          >
-            <path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"></path>
-            <path
-              d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"
-            ></path>
-            <path
-              d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"
-            ></path>
-            <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path>
-          </svg>
-          <span class="font-semibold tracking-tight">OMGBBQHAX LLC</span>
+          <img
+            src="images/logo.png"
+            alt="OMGBBQHAX LLC"
+            class="h-7 md:h-[1.85rem] w-auto max-w-[200px] object-contain object-left"
+            width="180"
+            height="40"
+            loading="eager"
+            decoding="async"
+          />
         </a>
 
         <ul
@@ -209,7 +212,7 @@
       class="w-full scroll-mt-14 relative isolate flex flex-col md:min-h-[100svh]"
     >
       <div
-        class="relative w-full md:flex-1 flex flex-col bg-[#F5F5F7] pt-24 md:pt-28 pb-0 min-h-0 items-stretch overflow-hidden"
+        class="relative w-full md:flex-1 flex flex-col bg-[#F5F5F7] pt-24 md:pt-28 pb-0 min-h-0 items-stretch overflow-x-hidden overflow-y-visible"
       >
         <!-- Soft “ground”: full width/height, vw-wide radial so it never clips on ultrawide/tall -->
         <div
@@ -248,46 +251,50 @@
           <div
             class="flex flex-col items-center gap-2 md:gap-2.5 w-full max-w-[42rem] mx-auto"
           >
-          <!-- Subtitle -->
-          <p
-            class="text-[clamp(1.0625rem,2.2vw,1.3125rem)] font-normal text-[#86868b] leading-snug max-w-none text-center text-balance"
-          >
-            Build your flower bed, garden wall or cat & dog house.
-          </p>
-
-          <!-- App Store Buttons -->
-          <div
-            id="buy"
-            class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 md:mt-5 pt-0 pb-0 scroll-mt-14"
-          >
-            <a
-              href="https://buy.stripe.com/dRm9AT1uLfzT8IXgjd0x205"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex items-center gap-3 bg-[#1d1d1f] text-white px-5 py-3 rounded-full hover:bg-[#424245] hover:-translate-y-0.5 transition-all duration-200 shadow-md border border-transparent"
+            <!-- Subtitle -->
+            <p
+              class="text-[clamp(1.0625rem,2.2vw,1.3125rem)] font-normal text-[#86868b] leading-snug max-w-none text-center text-balance"
             >
-              <img src="images/stripe.svg" class="w-12 h-8" />
-              <div class="flex flex-col items-start leading-none gap-0.5">
-                <span class="text-[11px] text-white/70 font-normal leading-tight"
-                  >Buy 8 piece</span
-                >
-                <span class="text-[15px] font-semibold tracking-tight text-white leading-tight"
-                  >99$</span
-                >
-              </div>
-            </a>
-          </div>
+              Build your flower bed, garden wall or cat & dog house.
+            </p>
+
+            <!-- App Store Buttons -->
+            <div
+              id="buy"
+              class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 md:mt-5 pt-0 pb-0 scroll-mt-14"
+            >
+              <a
+                href="https://buy.stripe.com/dRm9AT1uLfzT8IXgjd0x205"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-3 bg-[#1d1d1f] text-white px-5 py-3 rounded-full hover:bg-[#424245] hover:-translate-y-0.5 transition-all duration-200 shadow-md border border-transparent"
+              >
+                <img src="images/stripe.svg" class="w-12 h-8" />
+                <div class="flex flex-col items-start leading-none gap-0.5">
+                  <span
+                    class="text-[11px] text-white/70 font-normal leading-tight"
+                    >Buy 8 piece</span
+                  >
+                  <span
+                    class="text-[15px] font-semibold tracking-tight text-white leading-tight"
+                    >99$</span
+                  >
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
         <div
-          class="relative z-10 w-full max-w-5xl mx-auto px-6 mt-6 pt-2 md:mt-auto md:pt-4 lg:pt-6 shrink-0 reveal delay-200 active bg-transparent pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+          class="relative z-10 w-full max-w-5xl mx-auto px-6 mt-6 pt-2 md:mt-auto md:pt-4 lg:pt-6 shrink-0 reveal delay-200 active bg-transparent pb-[max(0.75rem,env(safe-area-inset-bottom))] overflow-visible"
         >
-          <img
-            src="images/b2.png"
-            alt="Interlocking brick mold visualization"
-            class="w-full h-auto block bg-transparent"
-          />
+          <div class="hero-hand-wrap w-full will-change-transform">
+            <img
+              src="images/b2.png"
+              alt="Interlocking brick mold visualization"
+              class="w-full h-auto block bg-transparent"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -336,7 +343,9 @@
               >
                 Spaces for steel and pipes.
               </h3>
-              <p class="text-[17px] font-normal text-[#86868b] leading-[1.47059]">
+              <p
+                class="text-[17px] font-normal text-[#86868b] leading-[1.47059]"
+              >
                 Designed for strength: The interlocking interface between bricks
                 leaves a calculated void, perfectly dimensioned for M22 iron
                 rods, allowing for invisible but powerful vertical
@@ -433,10 +442,12 @@
                       </svg>
                     </button>
                     <div class="flex flex-col items-center">
-                      <span class="text-[13px] font-semibold text-[#1d1d1f] leading-tight"
+                      <span
+                        class="text-[13px] font-semibold text-[#1d1d1f] leading-tight"
                         >90°</span
                       >
-                      <span class="text-[11px] text-[#86868b] leading-tight font-normal"
+                      <span
+                        class="text-[11px] text-[#86868b] leading-tight font-normal"
                         >For the corners</span
                       >
                     </div>
@@ -481,7 +492,9 @@
               >
                 90° for corners.
               </h3>
-              <p class="text-[17px] font-normal text-[#86868b] leading-[1.47059]">
+              <p
+                class="text-[17px] font-normal text-[#86868b] leading-[1.47059]"
+              >
                 Rotate to create. Use the same brick horizontally for walls or
                 turn it 90° to craft perfect corners. No special pieces
                 required—just one shape that unlocks infinite design
@@ -508,7 +521,9 @@
               >
                 3D Printed re-usable ABS molds.
               </h3>
-              <p class="text-[17px] font-normal text-[#86868b] leading-[1.47059]">
+              <p
+                class="text-[17px] font-normal text-[#86868b] leading-[1.47059]"
+              >
                 When concrete is poured into molds, the most critical factor is
                 preserving the exact geometry every time. However, during
                 demolding, the mold must also be flexible enough to deform
@@ -549,10 +564,14 @@
                     class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200 to-orange-300 flex items-center justify-center text-white font-bold text-xs shadow-inner"
                   ></div>
                   <div>
-                    <h4 class="text-[15px] font-semibold text-[#1d1d1f] leading-snug">
+                    <h4
+                      class="text-[15px] font-semibold text-[#1d1d1f] leading-snug"
+                    >
                       Flexible and reusable
                     </h4>
-                    <p class="text-[12px] text-[#86868b] leading-normal font-normal">
+                    <p
+                      class="text-[12px] text-[#86868b] leading-normal font-normal"
+                    >
                       We allways need fully autonomous houses.
                     </p>
                   </div>
@@ -596,34 +615,20 @@
         class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12"
       >
         <div class="space-y-4">
-          <div class="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              data-lucide="palmtree"
-              class="lucide lucide-palmtree w-5 h-5 text-emerald-600 stroke-[1.5]"
-            >
-              <path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"></path>
-              <path
-                d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"
-              ></path>
-              <path
-                d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"
-              ></path>
-              <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path>
-            </svg>
-            <span class="text-[19px] font-semibold text-[#1d1d1f] tracking-[-0.01em]"
-              >OMGBBQHAX LLC.</span
-            >
+          <div class="flex items-center">
+            <img
+              src="images/logo.png"
+              alt="OMGBBQHAX LLC"
+              class="h-9 md:h-10 w-auto max-w-[220px] object-contain object-left"
+              width="200"
+              height="44"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-          <p class="text-[12px] text-[#86868b] max-w-xs leading-[1.33337] font-normal">
+          <p
+            class="text-[12px] text-[#86868b] max-w-xs leading-[1.33337] font-normal"
+          >
             Redefining luxury real estate in apple store through design,
             3DPrinted molds.
           </p>
@@ -658,8 +663,12 @@
       >
         <span>© 2025 OMGBBQHAX LLC. All rights reserved.</span>
         <div class="flex gap-4">
-          <a href="#" class="hover:text-[#1d1d1f] transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-[#1d1d1f] transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-[#1d1d1f] transition-colors"
+            >Privacy Policy</a
+          >
+          <a href="#" class="hover:text-[#1d1d1f] transition-colors"
+            >Terms of Service</a
+          >
         </div>
       </div>
     </footer>
